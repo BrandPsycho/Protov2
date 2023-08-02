@@ -1,0 +1,72 @@
+﻿@model Protov2.DTO.ClientesDTO
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/register.css">
+
+    <title>REGISTER</title>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <img src="~/recursos/Miku_logo.png" alt="Logo de MIKUTECH">
+          <h1>MIKUTECH</h1>
+        </div>
+    </header>
+    <div class="login-container">
+      <div class="column-left">
+        <img src="~/recursos/img_login.jpg" alt="Imagen de fondo">
+      </div>
+      <div class="column-right">
+          <p style="margin-top: 25px; font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;">Registrar datos:</p>
+            <form asp-controller="Acceso" asp-action="Registrar" method="post">
+            <div class="container-row">
+              <div class="container-col-1">
+                <label for="nombre_cliente">Nombre:</label>
+                <input type="text" name="nombre_cliente" id="nombre_cliente" required>
+              </div>
+              <div class="container-col-2">
+                <label for="apellido_usuario">Apellido:</label>
+                <input type="text" name="apellido_cliente" id="apellido_cliente" required>
+              </div>
+            </div>
+            <div class="container-col">
+               <div>
+                  <label for="telefono_ciente">Teléfono:</label>
+                     <input type="text" id="telefono_cliente" name="telefono_cliente" maxlength="10"
+                        onkeypress="return isNumberKey(event)" oninput="checkTelefono()">
+                     <span id="telefono-error" style="color: red;"></span>
+               </div>
+              <div>
+                <label for="correo">Correo:</label>
+                <input type="email" id="correo" name="correo_elec" required>
+                <span id="correo-error" style="color: red;"></span>
+              </div>
+              <div>
+                <label for="contrasena">Contraseña:</label>
+                <input type="password" id="contrasena" name="contrasena" required>
+              </div>
+              <div>
+                <label for="c_contrasena">Confirmar contraseña:</label>
+                <input type="password" id="c_contrasena" name="confirmar_contrasena" required>
+              </div>
+              <input type="submit" value="Registrar">
+            </div>
+          </form>
+          <p class="register-text">¿Ya tienes una cuenta?
+                <a class="register-link" href="@Url.Action("Login", "Acceso")">Iniciar Sesión</a>
+            </p>
+      </div>
+    </div>
+    <script src="~/js/validation.js"></script>
+  </body>
+</html>
